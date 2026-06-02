@@ -8,14 +8,10 @@ venv/
 .pytest_cache/
 .ruff_cache/
 
-models/*
-!models/.gitkeep
+models/__pycache__/
+models/*.py[cod]
 
-data/raw/*
-!data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
-
-*.joblib
-*.pkl
-*.h5
+data/raw/__pycache__/
+data/raw/*.py[cod]
+data/processed/__pycache__/
+data/processed/*.py[cod]

@@ -74,13 +74,13 @@ def main():
     with col1:
         st.header("Property Details")
         sqft = st.slider("Square Footage", 500, 10000, 2500, 100)
-        bedrooms = st.slider("Bedrooms", 1, 10, 4, 1)
-        bathrooms = st.slider("Bathrooms", 1.0, 5.0, 2.5, 0.5)
-        location = st.selectbox("Location", ["Downtown", "Suburbs", "Waterfront", "Historic", "Hillside"])
-        age = st.slider("Age (Years)", 0, 100, 20, 1)
-        garage = st.slider("Garage Spaces", 0, 4, 2, 1)
-        pool = st.checkbox("Has Pool", value=False)
-        basement = st.checkbox("Has Basement", value=False)
+        bedrooms = st.slider("Bedrooms", 1, 10, 3, 1)
+        bathrooms = st.slider("Bathrooms", 1.0, 5.0, 2.0, 0.5)
+        location = st.selectbox("Location", ["Banglore", "Mumbai", "Delhi", "Hyderabad", "Pune"])
+        age = st.slider("Age (Years)", 0, 100, 10, 1)
+        garage = st.slider("Garage Spaces", 0, 4, 1, 1)
+        pool = st.checkbox("Swimming Pool Available", value=False)
+        basement = st.checkbox("Basement Available", value=False)
 
     with col2:
         st.header("Price Prediction")
@@ -96,7 +96,7 @@ def main():
         with col_price:
             st.metric(
                 "Estimated Price",
-                f"${predicted_price:,.0f}",
+                f"₹{predicted_price:,.0f}",
                 delta=None,
             )
 

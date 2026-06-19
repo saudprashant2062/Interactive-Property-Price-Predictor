@@ -1,7 +1,6 @@
 import streamlit as st
 from pathlib import Path
 import pandas as pd
-import numpy as np
 from joblib import load
 import plotly.graph_objects as go
 import sys
@@ -13,10 +12,8 @@ from src.config import (
     DEFAULT_SCALER_FILE,
     DEFAULT_ENCODER_FILE,
     DEFAULT_INPUT_FILE,
-    MODEL_DIR,
 )
 from src.sample_data import generate_sample_properties
-from src.preprocessing import preprocess
 from src.train import main as train_model
 
 
@@ -24,7 +21,6 @@ st.set_page_config(page_title="Property Price Predictor", layout="wide", initial
 
 
 def load_models():
-    """Load trained model and preprocessors."""
     if not DEFAULT_MODEL_FILE.exists():
         st.warning("Model not found. Training model on demo data...")
         if not DEFAULT_INPUT_FILE.exists():
@@ -38,7 +34,6 @@ def load_models():
 
 
 def create_prediction_df(sqft, bedrooms, bathrooms, location, age, garage, pool, basement, scaler, encoder):
-    """Create a DataFrame for prediction."""
     input_data = pd.DataFrame({
         'sqft': [sqft],
         'bedrooms': [bedrooms],
@@ -97,7 +92,6 @@ def main():
             st.metric(
                 "Estimated Price",
                 f"₹{predicted_price:,.0f}",
-                delta=None,
             )
 
         st.markdown("---")
@@ -121,7 +115,7 @@ def main():
 
     feature_importance = pd.DataFrame({
         'Feature': input_df.columns,
-        'Importance': model.feature_importances_[:len(input_df.columns)]
+        'Importance': model.feature_importances_
     }).sort_values('Importance', ascending=True).tail(10)
 
     fig = go.Figure(data=[

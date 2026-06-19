@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from pathlib import Path
 
 import numpy as np
@@ -12,8 +10,6 @@ def generate_sample_properties(
     n_samples: int = 500,
     seed: int = 42,
 ) -> Path:
-    """Generate synthetic property dataset for demo purposes."""
-
     rng = np.random.default_rng(seed)
 
     output_path = Path(output_path)
@@ -40,7 +36,6 @@ def generate_sample_properties(
 
     df = pd.DataFrame(data)
 
-    # Indian Property Pricing Logic
     base_price = 3_000_000
 
     sqft_factor = df["sqft"] * 7000

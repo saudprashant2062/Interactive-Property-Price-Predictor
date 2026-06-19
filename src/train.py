@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import argparse
 from pathlib import Path
 
@@ -17,11 +15,11 @@ from .sample_data import generate_sample_properties
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train property price predictor model")
-    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT_FILE, help="Path to property data CSV")
-    parser.add_argument("--output-model", type=Path, default=DEFAULT_MODEL_FILE, help="Path to save model")
-    parser.add_argument("--output-scaler", type=Path, default=DEFAULT_SCALER_FILE, help="Path to save scaler")
-    parser.add_argument("--output-encoder", type=Path, default=DEFAULT_ENCODER_FILE, help="Path to save encoder")
-    parser.add_argument("--generate-sample", action="store_true", help="Generate synthetic data if input is missing")
+    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT_FILE)
+    parser.add_argument("--output-model", type=Path, default=DEFAULT_MODEL_FILE)
+    parser.add_argument("--output-scaler", type=Path, default=DEFAULT_SCALER_FILE)
+    parser.add_argument("--output-encoder", type=Path, default=DEFAULT_ENCODER_FILE)
+    parser.add_argument("--generate-sample", action="store_true")
     return parser.parse_args()
 
 

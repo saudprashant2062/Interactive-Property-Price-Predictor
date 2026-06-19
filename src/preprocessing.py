@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from pathlib import Path
 
 import numpy as np
@@ -16,7 +14,6 @@ def load_data(path: str | Path) -> pd.DataFrame:
 
 
 def detect_and_remove_outliers(df: pd.DataFrame, target_column: str = "price", threshold: float = 3.0) -> pd.DataFrame:
-    """Remove outliers using IQR and Z-score methods."""
     df = df.copy()
 
     Q1 = df[target_column].quantile(0.25)
@@ -33,7 +30,6 @@ def detect_and_remove_outliers(df: pd.DataFrame, target_column: str = "price", t
 
 
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
-    """Fill missing values."""
     df = df.copy()
     for col in NUMERIC_COLUMNS:
         if col in df.columns and df[col].isnull().any():
@@ -47,7 +43,6 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def scale_numeric_features(df: pd.DataFrame, scaler: StandardScaler | None = None, fit: bool = True) -> tuple[pd.DataFrame, StandardScaler]:
-    """Scale numeric features."""
     df = df.copy()
 
     if scaler is None:
@@ -62,7 +57,6 @@ def scale_numeric_features(df: pd.DataFrame, scaler: StandardScaler | None = Non
 
 
 def encode_categorical_features(df: pd.DataFrame, encoder: OneHotEncoder | None = None, fit: bool = True) -> tuple[pd.DataFrame, OneHotEncoder]:
-    """Encode categorical features."""
     df = df.copy()
 
     if encoder is None:
@@ -81,7 +75,6 @@ def encode_categorical_features(df: pd.DataFrame, encoder: OneHotEncoder | None 
 
 
 def preprocess(df: pd.DataFrame, target_column: str = "price", fit_scalers: bool = True) -> tuple[pd.DataFrame, pd.Series, StandardScaler, OneHotEncoder]:
-    """Complete preprocessing pipeline."""
     df = load_data(df) if isinstance(df, (str, Path)) else df.copy()
 
     df = detect_and_remove_outliers(df, target_column)

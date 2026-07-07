@@ -16,16 +16,15 @@ A machine learning web application that predicts residential property prices usi
 - `app/` — Streamlit application
 - `models/` — trained XGBoost models
 - `data/` — raw and processed datasets
-- `app/` — Streamlit application
 
 ## How to Run
 
 ### 1. Create Virtual Environment
 
 ```bash
-python -m venv venv
-.\venv\Scripts\Activate.ps1       # Windows
-source venv/bin/activate          # Mac/Linux
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1      # Windows
+source .venv/bin/activate         # Mac/Linux
 ```
 
 ### 2. Install Dependencies
@@ -93,14 +92,14 @@ Input:
 - Square footage: 2500 sqft
 - Bedrooms: 4
 - Bathrooms: 2.5
-- Location: Downtown
+- Location: Mumbai
 - Age: 10 years
 - Garage: 2 spaces
+- Pool: No
+- Basement: Yes
 
 Output:
-- Predicted Price: $450,000
-- Model Confidence: 92%
-- Price Range: $420,000 - $480,000
+- Predicted Price: ₹1,25,00,000
 
 ## Performance Metrics
 
